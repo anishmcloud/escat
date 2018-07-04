@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 
 from elasticsearch import Elasticsearch
-from os import path
+import os
 import yaml
 import getpass
 from escat.utils import get_nested_config_values
@@ -32,9 +32,11 @@ def get_es_client(cluster_name: str, config_file: str):
 
 
 def parse_command_line_args(command_list, args):
+    home = os.path.expanduser('~')
+    default_config = os.path.join(home, '.escat', 'config.yml')
     argument_parser = ArgumentParser(description='Command line tools for management of Elasticsearch Clusters')
     argument_parser.add_argument('-c', '--cluster', help='The config profile to use', default='default', type=str)
-    argument_parser.add_argument('--config', help='Path to config file', default=path.expanduser('~/.es/config.yml'))
+    argument_parser.add_argument('--config', help='Path to config file', default=default_config)
     argument_parser.add_argument('module', choices=command_list)
     argument_parser.add_argument('-v', '--verbose', help='Whether to print output with headers', action='store_true', default=False)
     argument_parser.add_argument('-f', '--format', choices=['json', 'yaml', 'text'], default='text')

@@ -23,4 +23,4 @@ class MainTest(unittest.TestCase):
     @patch('getpass.getpass')
     def test_main(self, getpass):
         getpass.return_value  = 'thisismypassword'
-        print(main(['nodes', '--config', 'resources/config.yml', '-f', 'json']))
+        print(main(['nodes', '--config', '../../resources/config.yml', '-f', 'json']))
