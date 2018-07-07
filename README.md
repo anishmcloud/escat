@@ -1,6 +1,6 @@
 # Elasticsearch cat CLI
 Basic Elasticsearch cat API command line wrapper with multi-cluster support
-
+[![Build Status](https://travis-ci.org/anishmcloud/escat.svg?branch=master)](https://travis-ci.org/anishmcloud/escat)
 #### Features:
 - Complete coverage of all Elasticsearch `cat` modules
 - Exposed `cat` API call options as command line arguments
