@@ -6,7 +6,7 @@ with open('README.md', 'r') as fh:
 
 setuptools.setup(
     name='escat',
-    version='0.0.1',
+    version='1.0.0',
     author='Anish Mashankar',
     scripts=["bin/escat"],
     description='Command line wrapper for Elasticsearch CAT API',
