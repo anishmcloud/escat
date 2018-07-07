@@ -4,11 +4,7 @@ matrix:
   include:
     - os: linux
       dist: trusty
-      python: 3.7
-
-    - os: osx
-      language: objective-c
-      env: PYENV_VERSION=3.6.5
+      python: 3.6.5
 
 before_install:
   - docker pull docker.elastic.co/elasticsearch/elasticsearch:6.3.0
