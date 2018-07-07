@@ -1,5 +1,5 @@
-# Elasticsearch CAT CLI
-Basic command line wrapper for multi-cluster Elasticsearch status gathering
+# Elasticsearch cat CLI
+Basic Elasticsearch cat API command line wrapper with multi-cluster support
 
 #### Features:
 - Complete coverage of all Elasticsearch `cat` modules
@@ -14,12 +14,19 @@ Basic command line wrapper for multi-cluster Elasticsearch status gathering
 - pip
 
 **Installation instructions**
+- Install using pip
 ```
 pip install escat
 ```
+- Create a file config file as described in the Configuration section. If you would like to quickly get started, just use the following format and create that file in the destination `~/.escat/config.yml`
+```yaml
+clusters:
+  default:
+    hosts: ["http://localhost:9200"]    
+```
 
 ### Configuration
-The following is the default configuration file which will be created on installation at `~/.es/config.yml`. This path is also configurable at runtime:
+Example configuration
 ```yaml
 clusters:
   default:
@@ -52,7 +59,17 @@ clusters:
       private_key: '~/.openssl/certs/prod-es-cert.key'
       verify_certs: yes
 ```
-
+If you set a config like this:
+```yaml
+clusters:
+  default:
+    hosts: ['http://localhost:9200']
+    auth:
+      username: 'elastic'
+      password:
+        ask: yes
+```
+You will be asked for the password on a command line. 
 ### Running
 To understand some options, please refer the config example directly above
 Get help for commands
@@ -77,10 +94,11 @@ escat --config ~/.es.yml --cluster dev health
 ```
 
 ### Contributing
-The code is not exactly the perfect epitome of python development. I expect there would be some issues one might face using this. Please raise them here.
+Please raise github issues related to questions, feature requests or troubleshooting. Also, to make debug person's life easier, one should always include the following information:
 - Command ran
 - Operating system
 - Python version
+- Elasticsearch version
 
 Currently, the escat is only tested on Python 3.6.5 on Ubuntu 16.04, Windows 10, and Mac OSX. 
 PRs are welcome. Do mention the description in brief what the PR would fix. If the PR is in a form of checklist, it would be amazing.
