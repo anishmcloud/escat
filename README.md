@@ -1,6 +1,8 @@
 # Elasticsearch cat CLI
 Basic Elasticsearch cat API command line wrapper with multi-cluster support
+
 [![Build Status](https://travis-ci.org/anishmcloud/escat.svg?branch=master)](https://travis-ci.org/anishmcloud/escat)
+[![PyPI](https://img.shields.io/pypi/v/escat.svg)](https://pypi.org/project/escat/)
 #### Features:
 - Complete coverage of all Elasticsearch `cat` modules
 - Exposed `cat` API call options as command line arguments
@@ -22,7 +24,7 @@ pip install escat
 ```yaml
 clusters:
   default:
-    hosts: ["http://localhost:9200"]    
+    hosts: ["http://localhost:9200"]
 ```
 
 ### Configuration
@@ -69,21 +71,22 @@ clusters:
       password:
         ask: yes
 ```
-You will be asked for the password on a command line. 
+You will be asked for the password on a command line.
 ### Running
-To understand some options, please refer the config example directly above
+To understand some options, please refer the config example directly above.
+
 Get help for commands
 ```
 escat -h
 ```
 Get cluster health for default cluster
-```
+```l
 escat health
 ```
 Get count for selective indices in the dev cluster
 ```
 escat --cluster dev count --indices "dev-test"
-``` 
+```
 Get recovery information on prod cluster in json format
 ```
 escat --cluster prod --format json recovery
@@ -100,7 +103,7 @@ Please raise github issues related to questions, feature requests or troubleshoo
 - Python version
 - Elasticsearch version
 
-Currently, the escat is only tested on Python 3.6.5 on Ubuntu 16.04, Windows 10, and Mac OSX. 
+Currently, the escat is only tested on Python 3.6.5 on Ubuntu 16.04, Windows 10, and Mac OSX.
 PRs are welcome. Do mention the description in brief what the PR would fix. If the PR is in a form of checklist, it would be amazing.
 
 ### Resources
