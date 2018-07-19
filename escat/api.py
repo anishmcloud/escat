@@ -1,7 +1,7 @@
 import sys
 
 import elasticsearch
-
+import json
 
 class ElasticsearchCatCli():
 
@@ -10,7 +10,11 @@ class ElasticsearchCatCli():
 
     def run_command(self, func, options, **kwargs):
         try:
-            return func(params=options, **kwargs)
+            retval = func(params=options, **kwargs)
+            if not type(retval) == str:
+                return json.dumps(retval)
+            else:
+                return retval
         except elasticsearch.ElasticsearchException as e:
             print(e)
             sys.exit(1)

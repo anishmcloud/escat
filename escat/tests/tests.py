@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 from escat import config
 from escat.main import main
-
+import json
 
 class ConfigTest(unittest.TestCase):
 
@@ -19,8 +19,17 @@ class ConfigTest(unittest.TestCase):
         self.assertDictEqual(expected, config.get_config_from_file('default', 'resources/config.yml'))
 
 
+@patch('getpass.getpass')
 class MainTest(unittest.TestCase):
-    @patch('getpass.getpass')
+
     def test_main(self, getpass):
         getpass.return_value  = 'thisismypassword'
-        print(main(['nodes', '--config', 'resources/config.yml', '-f', 'json']))
+        print(main(['nodes', '--config', 'resources/config.yml']))
+
+    def test_correct_json_retured(self, getpass):
+        getpass.return_value = 'thisismypassword'
+        print(main(['nodes', '--format', 'json']))
+
+    def test_with_headers(self, getpass):
+        getpass.return_value = 'thisismypassword'
+        print(main(['nodes', '-v']))

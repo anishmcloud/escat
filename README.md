@@ -6,7 +6,7 @@ Basic Elasticsearch cat API command line wrapper with multi-cluster support
 #### Features:
 - Complete coverage of all Elasticsearch `cat` modules
 - Exposed `cat` API call options as command line arguments
-- Get output in form of json, yaml or text
+- Get output in form of json, or text
 - Manage multiple clusters using profiles
 - Support for SSL and Password authentication
 
@@ -20,7 +20,7 @@ Basic Elasticsearch cat API command line wrapper with multi-cluster support
 ```
 pip install escat
 ```
-- Create a file config file as described in the Configuration section. If you would like to quickly get started, just use the following format and create that file in the destination `~/.escat/config.yml`
+- A config file will be automatically created in the home directory of the current user called `~/escat.yml`. This file will have the default configuration:
 ```yaml
 clusters:
   default:
