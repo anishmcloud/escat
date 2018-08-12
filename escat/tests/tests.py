@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 from escat import config
 from escat.main import main
-import json
+
 
 class ConfigTest(unittest.TestCase):
 
@@ -33,3 +33,7 @@ class MainTest(unittest.TestCase):
     def test_with_headers(self, getpass):
         getpass.return_value = 'thisismypassword'
         print(main(['nodes', '-v']))
+
+    def test_with_bytes(self, getpass):
+        getpass.return_value = "thisismypassword"
+        print(main(['shards', '-b', 'b', '-v']))

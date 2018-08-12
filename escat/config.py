@@ -60,5 +60,8 @@ def get_common_cat_api_params(namespace):
     headers = namespace.headers
     if headers is not None:
         params['h'] = headers
+    b = namespace.bytes
+    if b is not None:
+        params['bytes'] = b
     params['format'] = namespace.format
     return params
